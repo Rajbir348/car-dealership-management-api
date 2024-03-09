@@ -4,12 +4,12 @@ import { isTokenBlacklisted } from '../models/blacklistJwt.js';
 const jwtValidation = async (req, res, next) => {
   try {
     const token = req.cookies.jwt;
-
+    
     // Check if the token is blacklisted
-    const isBlacklisted = await isTokenBlacklisted(token);
-    if (isBlacklisted) {
-      return res.status(401).json({ message: 'Unauthorized: Token is blacklisted' });
-    }
+    // const isBlacklisted = await isTokenBlacklisted(token);
+    // if (isBlacklisted) {
+    //   return res.status(401).json({ message: 'Unauthorized: Token is blacklisted' });
+    // }
 
     // Verify the JWT and extract user information
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
